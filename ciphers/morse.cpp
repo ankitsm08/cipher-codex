@@ -2,6 +2,9 @@
 
 using namespace std;
 
+// ! The special characters for morse code are MADE-UP and
+// ! in no way are they part of the standard morse code.
+
 map<char, string> morseCodeMap = {
   // Uppercase Letters
   {'A', ".-"},    {'B', "-..."},  {'C', "-.-."},  {'D', "-.."},
