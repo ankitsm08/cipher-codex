@@ -1,0 +1,12 @@
+# IDE Files
+.vscode/
+
+# env
+.venv/
+
+# build
+build/
+*.exe
+
+# notes
+*.txt
