@@ -1,6 +1,6 @@
 #include <iostream>
-#include "ciphers/simple/morse.h"
-#include "ciphers/simple/caesar.h"
+#include "ciphers/morse.h"
+#include "ciphers/caesar.h"
 
 using namespace std;
 

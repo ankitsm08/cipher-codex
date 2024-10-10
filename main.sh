@@ -1,6 +1,6 @@
 g++ test.cpp \
-  ciphers/simple/morse.cpp \
-  ciphers/simple/caesar.cpp \
+  ciphers/morse.cpp \
+  ciphers/caesar.cpp \
   -o test
 
 ./test
