@@ -2,13 +2,13 @@
 
 using namespace std;
 
-string encode(const string& text) {
+string encrypt(const string& text) {
   string code = "";
 
   return code;
 }
 
-string decode(const string& code) {
+string decrypt(const string& code) {
   string text = "";
 
   return text;
