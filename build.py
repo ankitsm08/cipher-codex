@@ -35,7 +35,7 @@ def create_ps1_script(ciphers):
     ps1_file.write(f"  -o {test_file}\n")
     ps1_file.write(f"\n./{test_file}\n")
 
-# Function to add missing includes and sort them
+# Function to add includes
 def update_includes(ciphers, file_path):
   header_files = [f'#include "ciphers/{cipher}.h"' for cipher in ciphers]
 
@@ -43,8 +43,9 @@ def update_includes(ciphers, file_path):
   with open(file_path, 'r') as cpp_file:
     lines = cpp_file.readlines()
 
-  # Write the updated file with sorted includes
+  # Write the updated file
   with open(file_path, 'w') as cpp_file:
+    # Add all the cipher includes
     cpp_file.writelines([include + '\n' for include in header_files])
     cpp_file.write('\n')
     
