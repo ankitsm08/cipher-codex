@@ -1,5 +1,5 @@
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <sstream>
 
 #ifndef MORSE_H

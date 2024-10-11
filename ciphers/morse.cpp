@@ -5,7 +5,7 @@ using namespace std;
 // ! The special characters for morse code are MADE-UP and
 // ! in no way are they part of the standard morse code.
 
-map<char, string> morseCodeMap = {
+unordered_map<char, string> morseCodeMap = {
   // Uppercase Letters
   {'A', ".-"},    {'B', "-..."},  {'C', "-.-."},  {'D', "-.."},
   {'E', "."},     {'F', "..-."},  {'G', "--."},   {'H', "...."},
@@ -41,7 +41,7 @@ map<char, string> morseCodeMap = {
   {' ', "/"},        {'\n', ".-.-.."}
 };
 
-map<string, char> reverseMorseCodeMap = {
+unordered_map<string, char> reverseMorseCodeMap = {
   // Uppercase Letters
   {".-", 'A'},    {"-...", 'B'},   {"-.-.", 'C'},   {"-..", 'D'},
   {".", 'E'},     {"..-.", 'F'},   {"--.", 'G'},    {"....", 'H'},
