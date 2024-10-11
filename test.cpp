@@ -1,6 +1,7 @@
 #include "ciphers/morse.h"
 #include "ciphers/caesar.h"
 #include "ciphers/rot13.h"
+#include "ciphers/substitution.h"
 
 #include <iostream>
 #include <fstream>
@@ -100,11 +101,20 @@ int main() {
     if (enc) result = rot13::encrypt(input);
     else result = rot13::decrypt(input);
 
+  } else if (selectedCipher == "Substitution Cipher"){
+
+    string keyword;
+    cout << "Enter keyword: ";
+    cin >> keyword;
+
+    if (enc) result = substitution::encrypt(input, keyword);
+    else result = substitution::decrypt(input, keyword);
+
   } else {
     cout << "Unknown cipher: " << selectedCipher << endl;
   }
 
-  cout << "Result: " << result << endl;
+  cout << endl << "Result: " << result << endl;
 
   return 0;
 }
