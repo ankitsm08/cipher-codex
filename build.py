@@ -35,16 +35,6 @@ def create_ps1_script(ciphers):
     ps1_file.write(f"  -o {test_file}\n")
     ps1_file.write(f"\n./{test_file}\n")
 
-# Function to find existing includes in test.cpp
-def find_existing_includes(file_path):
-  includes = []
-  with open(file_path, 'r') as cpp_file:
-    lines = cpp_file.readlines()
-    for line in lines:
-      if line.startswith('#include'):
-        includes.append(line.strip())
-  return includes
-
 # Function to add missing includes and sort them
 def update_includes(ciphers, file_path):
   header_files = [f'#include "ciphers/{cipher}.h"' for cipher in ciphers]
