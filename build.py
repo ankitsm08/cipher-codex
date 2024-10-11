@@ -7,7 +7,7 @@ test_file = "test"
 def read_ciphers(filename):
   ciphers = []
   with open(filename, "r") as file:
-    ciphers = [(line.split()[0]).strip().lower() for line in file.readlines() if line.strip()]
+    ciphers = [(line.split()[0]).strip().lower().replace('-', '') for line in file.readlines() if line.strip()]
   return ciphers
 
 def create_sh_script(ciphers):
