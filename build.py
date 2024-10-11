@@ -47,7 +47,6 @@ def update_includes(ciphers, file_path):
   with open(file_path, 'w') as cpp_file:
     # Add all the cipher includes
     cpp_file.writelines([include + '\n' for include in header_files])
-    cpp_file.write('\n')
     
     for line in lines:
       # Skip over the existing includes
