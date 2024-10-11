@@ -10,30 +10,15 @@ def read_ciphers(filename):
     ciphers = [(line.split()[0]).strip().lower().replace('-', '') for line in file.readlines() if line.strip()]
   return ciphers
 
-def create_sh_script(ciphers):
-  with open(f"{main_script}.sh", "w") as sh_file:
-    sh_file.write("#!/bin/bash\n")
-    sh_file.write(f"g++ {test_file}.cpp \\\n")
-    for cipher in ciphers:
-      sh_file.write(f"  ciphers/{cipher}.cpp \\\n")
-    sh_file.write(f"  -o {test_file}\n")
-    sh_file.write(f"\n./{test_file}\n")
+def create_script(ciphers, ext, br, exe_ext = None, extra = None, runner_prefix = "./"):
+  with open(f"{main_script}.{ext}", "w") as file:
+    if extra: file.write(f"{extra}\n")
 
-def create_bat_script(ciphers):
-  with open(f"{main_script}.bat", "w") as bat_file:
-    bat_file.write(f"g++ {test_file}.cpp ^\n")
-    for cipher in ciphers:
-      bat_file.write(f"  ciphers/{cipher}.cpp ^\n")
-    bat_file.write(f"  -o {test_file}.exe\n")
-    bat_file.write(f"\n{test_file}.exe\n")
+    file.write(f"g++ {test_file}.cpp {br}\n")
+    file.writelines([f"  ciphers/{cipher}.cpp {br}\n" for cipher in ciphers])
 
-def create_ps1_script(ciphers):
-  with open(f"{main_script}.ps1", "w") as ps1_file:
-    ps1_file.write(f"g++ {test_file}.cpp `\n")
-    for cipher in ciphers:
-      ps1_file.write(f"  ciphers/{cipher}.cpp `\n")
-    ps1_file.write(f"  -o {test_file}\n")
-    ps1_file.write(f"\n./{test_file}\n")
+    test_file_with_ext = f"{test_file}{f'.{exe_ext}' if exe_ext else ''}"
+    file.write(f"  -o {test_file_with_ext}\n\n{runner_prefix}{test_file_with_ext}\n")
 
 # Function to add includes
 def update_includes(ciphers, file_path):
@@ -49,19 +34,17 @@ def update_includes(ciphers, file_path):
     cpp_file.writelines([include + '\n' for include in header_files])
     
     for line in lines:
-      # Skip over the existing includes
-      if line.startswith('#include "') and line.endswith('.h"\n'):
-        continue
-      cpp_file.write(line)
+      # Skip over the existing includes '**.h' files
+      if not (line.startswith('#include "') and line.endswith('.h"\n')):
+        cpp_file.write(line)
 
 def main():
   # read the ciphers from the file
   ciphers = read_ciphers("ciphers.txt")
 
-  # create the ps1, bat and sh script files
-  create_ps1_script(ciphers)
-  create_bat_script(ciphers)
-  create_sh_script(ciphers)
+  create_script(ciphers, "ps1", "`")
+  create_script(ciphers, "bat", "^", "exe", runner_prefix="")
+  create_script(ciphers, "sh", "\\", extra = ("#" "!/bin/bash"))
  
   # update test.cpp with necessary includes
   update_includes(ciphers, 'test.cpp')
