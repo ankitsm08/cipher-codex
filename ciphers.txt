@@ -2,3 +2,4 @@ Morse Code
 Caesar Cipher
 ROT13 Cipher
 Substitution Cipher
+Vigenere Cipher

@@ -2,6 +2,7 @@
 #include "ciphers/caesar.h"
 #include "ciphers/rot13.h"
 #include "ciphers/substitution.h"
+#include "ciphers/vigenere.h"
 
 #include <iostream>
 #include <fstream>
@@ -109,6 +110,15 @@ int main() {
 
     if (enc) result = substitution::encrypt(input, keyword);
     else result = substitution::decrypt(input, keyword);
+
+  } else if (selectedCipher == "Vigenere Cipher"){
+
+    string keyword;
+    cout << "Enter keyword: ";
+    cin >> keyword;
+
+    if (enc) result = vigenere::encrypt(input, keyword);
+    else result = vigenere::decrypt(input, keyword);
 
   } else {
     cout << "Unknown cipher: " << selectedCipher << endl;
