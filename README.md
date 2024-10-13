@@ -4,3 +4,6 @@ Tools I used for the programs:
 
 - String Stream
   - Morse Code
+
+- Sets
+  - Substitution Cipher

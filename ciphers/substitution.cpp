@@ -2,25 +2,27 @@
 
 using namespace std;
 
-string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-bool isInKey(const string& key, char c) {
-  return key.find(c) != string::npos;
+bool isInKey(const unordered_set<char>& keySet, char c) {
+  return keySet.find(c) != keySet.end();
 }
 
 // Generates a capitalised key 
 string generateKey(const string& keyword) {
   string key = "";
+  unordered_set<char> keySet;
 
   for (char c : keyword) {
     c = toupper(c);
-    if (!isInKey(key, c)) {
+    if (!isInKey(keySet, c)) {
       key += c;
+      keySet.insert(c);
     }
   }
 
   for (char c : alphabet) {
-    if (!isInKey(key, c)) {
+    if (!isInKey(keySet, c)) {
       key += c;
     }
   }

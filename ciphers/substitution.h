@@ -1,4 +1,5 @@
 #include <string>
+#include <unordered_set>
 
 #ifndef SUBSTITUTION_H
 #define SUBSTITUTION_H
