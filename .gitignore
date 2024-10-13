@@ -6,7 +6,9 @@
 
 # build
 build/
+
 *.exe
+!test.exe
 
 # notes
 *.txt.*
