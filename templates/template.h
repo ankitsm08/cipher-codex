@@ -5,7 +5,7 @@
 
 namespace temp {
   std::string encrypt(const std::string& text);
-  std::string decrypt(const std::string& text);
+  std::string decrypt(const std::string& code);
 }
 
 #endif // TEMPLATE_H
