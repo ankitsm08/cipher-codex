@@ -3,6 +3,7 @@
 #include "ciphers/rot13.h"
 #include "ciphers/substitution.h"
 #include "ciphers/vigenere.h"
+#include "ciphers/atbash.h"
 
 #include <iostream>
 #include <fstream>
@@ -120,11 +121,16 @@ int main() {
     if (enc) result = vigenere::encrypt(input, keyword);
     else result = vigenere::decrypt(input, keyword);
 
+  } else if (selectedCipher == "Atbash Cipher"){
+
+    if (enc) result = atbash::encrypt(input);
+    else result = atbash::decrypt(input);
+
   } else {
     cout << "Unknown cipher: " << selectedCipher << endl;
   }
 
-  cout << endl << "Result: " << result << endl;
+  cout << endl << "Result: " << result << endl << endl;
 
   return 0;
 }
