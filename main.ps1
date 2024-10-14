@@ -5,6 +5,7 @@ g++ test.cpp `
   ciphers/substitution.cpp `
   ciphers/vigenere.cpp `
   ciphers/atbash.cpp `
+  ciphers/bacon.cpp `
   -o test
 
 ./test

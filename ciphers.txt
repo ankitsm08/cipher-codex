@@ -4,3 +4,4 @@ ROT13 Cipher
 Substitution Cipher
 Vigenere Cipher
 Atbash Cipher
+Bacon Cipher

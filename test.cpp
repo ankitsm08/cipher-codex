@@ -4,6 +4,7 @@
 #include "ciphers/substitution.h"
 #include "ciphers/vigenere.h"
 #include "ciphers/atbash.h"
+#include "ciphers/bacon.h"
 
 #include <iostream>
 #include <fstream>
@@ -125,6 +126,15 @@ int main() {
 
     if (enc) result = atbash::encrypt(input);
     else result = atbash::decrypt(input);
+
+  } else if (selectedCipher == "Bacon Cipher"){
+
+    char c0, c1;
+    cout << "Enter binary digits (char): ";
+    cin >> c0 >> c1; 
+
+    if (enc) result = bacon::encrypt(input, c0, c1);
+    else result = bacon::decrypt(input, c0, c1);
 
   } else {
     cout << "Unknown cipher: " << selectedCipher << endl;
