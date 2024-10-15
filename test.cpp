@@ -1,10 +1,4 @@
-#include "ciphers/morse.h"
-#include "ciphers/caesar.h"
-#include "ciphers/rot13.h"
-#include "ciphers/substitution.h"
-#include "ciphers/vigenere.h"
-#include "ciphers/atbash.h"
-#include "ciphers/bacon.h"
+#include "ciphers.h"
 
 #include <iostream>
 #include <fstream>
