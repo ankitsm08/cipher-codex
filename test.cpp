@@ -24,24 +24,24 @@ vector<string> readCipherList(const string &filename) {
 }
 
 int clamp(int value, int low, int high) {
-    return (value < low) ? low : (value > high) ? high : value;
+  return (value < low) ? low : (value > high) ? high : value;
 }
 
 int main() {
-  string input;
+  string inputString;
   string line;
 
   cout << endl
        << "Enter your paragraph (press Enter twice to finish):" << endl;
 
   getline(cin, line);
-  input += line;
+  inputString += line;
 
   // Loop until an empty line is entered
   while (true) {
     getline(cin, line);
     if (line.empty()) break;
-    input += "\n" + line;
+    inputString += "\n" + line;
   }
 
   // Load available ciphers from file
@@ -75,71 +75,69 @@ int main() {
   cin >> choice;
   cout << endl;
 
-  bool enc = !(choice == 2);
+  bool to_encrypt = !(choice == 2);
 
   string result;
 
-  if (selectedCipher == "Morse Code") {
+  result = cipher(selectedCipher, to_encrypt, inputString);
 
-    if (enc) result = morse::encrypt(input);
-    else result = morse::decrypt(input);
+  cout << endl << "Result: " << result << endl << endl;
 
-  } else if (selectedCipher == "Caesar Cipher") {
+  return 0;
+}
+
+string cipher(const string& cipherType, bool enc, const string& input) {
+
+  if (cipherType == "Morse Code") {
+
+    return (enc) ? morse::encrypt(input) : morse::decrypt(input);
+
+  } else if (cipherType == "Caesar Cipher") {
 
     int shift;
     cout << "Enter shift: ";
     cin >> shift;
 
-    if (enc) result = caesar::encrypt(input, shift);
-    else result = caesar::decrypt(input, shift);
+    return (enc) ? caesar::encrypt(input, shift) : caesar::decrypt(input, shift);
 
-  } else if (selectedCipher == "ROT13 Cipher") {
+  } else if (cipherType == "ROT13 Cipher") {
 
-    if (enc) result = rot13::encrypt(input);
-    else result = rot13::decrypt(input);
+    return (enc) ? rot13::encrypt(input) : rot13::decrypt(input);
 
-  } else if (selectedCipher == "Substitution Cipher") {
+  } else if (cipherType == "Substitution Cipher") {
 
     string keyword;
     cout << "Enter keyword: ";
     cin >> keyword;
 
-    if (enc) result = substitution::encrypt(input, keyword);
-    else result = substitution::decrypt(input, keyword);
+    return (enc) ? substitution::encrypt(input, keyword) : substitution::decrypt(input, keyword);
 
-  } else if (selectedCipher == "Vigenere Cipher") {
+  } else if (cipherType == "Vigenere Cipher") {
 
     string keyword;
     cout << "Enter keyword: ";
     cin >> keyword;
 
-    if (enc) result = vigenere::encrypt(input, keyword);
-    else result = vigenere::decrypt(input, keyword);
+    return (enc) ? vigenere::encrypt(input, keyword) : vigenere::decrypt(input, keyword);
 
-  } else if (selectedCipher == "Atbash Cipher") {
+  } else if (cipherType == "Atbash Cipher") {
 
-    if (enc) result = atbash::encrypt(input);
-    else result = atbash::decrypt(input);
+    return (enc) ? atbash::encrypt(input) : atbash::decrypt(input);
 
-  } else if (selectedCipher == "Bacon Cipher") {
+  } else if (cipherType == "Bacon Cipher") {
 
     char c0, c1;
     cout << "Enter binary digits (char): ";
     cin >> c0 >> c1; 
 
-    if (enc) result = bacon::encrypt(input, c0, c1);
-    else result = bacon::decrypt(input, c0, c1);
+    return (enc) ? bacon::encrypt(input, c0, c1) : bacon::decrypt(input, c0, c1);
 
-  } else if (selectedCipher == "Polybius-Square Cipher") {
+  } else if (cipherType == "Polybius-Square Cipher") {
 
-    if (enc) result = polybiusSquare::encrypt(input);
-    else result = polybiusSquare::decrypt(input);
+    return (enc) ? polybiusSquare::encrypt(input) : polybiusSquare::decrypt(input);
 
   }  else {
-    cout << "Unknown cipher: " << selectedCipher << endl;
+    cout << "Unknown cipher: " << cipherType << endl;
+    return "Nan";
   }
-
-  cout << endl << "Result: " << result << endl << endl;
-
-  return 0;
 }
