@@ -5,3 +5,4 @@ Substitution Cipher
 Vigenere Cipher
 Atbash Cipher
 Bacon Cipher
+Polybius-Square Cipher

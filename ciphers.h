@@ -5,3 +5,4 @@
 #include "ciphers/vigenere.h"
 #include "ciphers/atbash.h"
 #include "ciphers/bacon.h"
+#include "ciphers/polybiusSquare.h"

@@ -7,6 +7,7 @@ g++ test.cpp \
   ciphers/vigenere.cpp \
   ciphers/atbash.cpp \
   ciphers/bacon.cpp \
+  ciphers/polybiusSquare.cpp \
   -o test
 
 ./test

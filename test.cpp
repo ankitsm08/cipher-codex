@@ -93,12 +93,12 @@ int main() {
     if (enc) result = caesar::encrypt(input, shift);
     else result = caesar::decrypt(input, shift);
 
-  } else if (selectedCipher == "ROT13 Cipher"){
+  } else if (selectedCipher == "ROT13 Cipher") {
 
     if (enc) result = rot13::encrypt(input);
     else result = rot13::decrypt(input);
 
-  } else if (selectedCipher == "Substitution Cipher"){
+  } else if (selectedCipher == "Substitution Cipher") {
 
     string keyword;
     cout << "Enter keyword: ";
@@ -107,7 +107,7 @@ int main() {
     if (enc) result = substitution::encrypt(input, keyword);
     else result = substitution::decrypt(input, keyword);
 
-  } else if (selectedCipher == "Vigenere Cipher"){
+  } else if (selectedCipher == "Vigenere Cipher") {
 
     string keyword;
     cout << "Enter keyword: ";
@@ -116,12 +116,12 @@ int main() {
     if (enc) result = vigenere::encrypt(input, keyword);
     else result = vigenere::decrypt(input, keyword);
 
-  } else if (selectedCipher == "Atbash Cipher"){
+  } else if (selectedCipher == "Atbash Cipher") {
 
     if (enc) result = atbash::encrypt(input);
     else result = atbash::decrypt(input);
 
-  } else if (selectedCipher == "Bacon Cipher"){
+  } else if (selectedCipher == "Bacon Cipher") {
 
     char c0, c1;
     cout << "Enter binary digits (char): ";
@@ -130,7 +130,12 @@ int main() {
     if (enc) result = bacon::encrypt(input, c0, c1);
     else result = bacon::decrypt(input, c0, c1);
 
-  } else {
+  } else if (selectedCipher == "Polybius-Square Cipher") {
+
+    if (enc) result = polybiusSquare::encrypt(input);
+    else result = polybiusSquare::decrypt(input);
+
+  }  else {
     cout << "Unknown cipher: " << selectedCipher << endl;
   }
 
