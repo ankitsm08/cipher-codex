@@ -1,8 +1,12 @@
 import os
 
 def read_ciphers(filename):
+  ciphers = []
   with open(filename, "r") as file:
-    ciphers = [(line.split()[0]).strip().lower().replace('-', '') for line in file.readlines() if line.strip()]
+    lines = [(line.strip().split()[0]).strip().lower() for line in file.readlines() if line.strip()]
+    for line in lines:
+      cipher = ''.join([c.capitalize() if i != 0 else c for i, c in enumerate(line.split('-')) if c])
+      ciphers.append(cipher)
   return ciphers
 
 def create_script(
