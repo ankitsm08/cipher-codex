@@ -27,6 +27,72 @@ int clamp(int value, int low, int high) {
   return (value < low) ? low : (value > high) ? high : value;
 }
 
+// Wrapper for all ciphers, accepting additional values and returning result
+string cipher(const string& cipherType, bool enc, const string& input) {
+
+  if (cipherType == "Morse Code") {
+
+    return (enc) ? morse::encrypt(input) : morse::decrypt(input);
+
+  } else if (cipherType == "Caesar Cipher") {
+
+    int shift;
+    cout << "Enter shift: ";
+    cin >> shift;
+
+    return (enc) ? caesar::encrypt(input, shift) : caesar::decrypt(input, shift);
+
+  } else if (cipherType == "ROT13 Cipher") {
+
+    return (enc) ? rot13::encrypt(input) : rot13::decrypt(input);
+
+  } else if (cipherType == "Substitution Cipher") {
+
+    string keyword;
+    cout << "Enter keyword: ";
+    cin >> keyword;
+
+    return (enc) ? substitution::encrypt(input, keyword) : substitution::decrypt(input, keyword);
+
+  } else if (cipherType == "Vigenere Cipher") {
+
+    string keyword;
+    cout << "Enter keyword: ";
+    cin >> keyword;
+
+    return (enc) ? vigenere::encrypt(input, keyword) : vigenere::decrypt(input, keyword);
+
+  } else if (cipherType == "Atbash Cipher") {
+
+    return (enc) ? atbash::encrypt(input) : atbash::decrypt(input);
+
+  } else if (cipherType == "Bacon Cipher") {
+
+    char c0, c1;
+    cout << "Enter binary digits (char): ";
+    cin >> c0 >> c1; 
+
+    return (enc) ? bacon::encrypt(input, c0, c1) : bacon::decrypt(input, c0, c1);
+
+  } else if (cipherType == "Polybius-Square Cipher") {
+
+    return (enc) ? polybiusSquare::encrypt(input) : polybiusSquare::decrypt(input);
+
+  } else if (cipherType == "Rail-Fence Cipher") {
+
+    int key;
+    cout << "Enter key: ";
+    cin >> key;
+
+    return (enc) ? railFence::encrypt(input, key) : railFence::decrypt(input, key);
+
+  } else {
+    cout << "Unknown cipher: " << cipherType << endl;
+    return "Nan";
+  }
+}
+
+// * MAIN TEST FUNCTION *
 int main() {
   string inputString;
   string line;
@@ -84,60 +150,4 @@ int main() {
   cout << endl << "Result: " << result << endl << endl;
 
   return 0;
-}
-
-string cipher(const string& cipherType, bool enc, const string& input) {
-
-  if (cipherType == "Morse Code") {
-
-    return (enc) ? morse::encrypt(input) : morse::decrypt(input);
-
-  } else if (cipherType == "Caesar Cipher") {
-
-    int shift;
-    cout << "Enter shift: ";
-    cin >> shift;
-
-    return (enc) ? caesar::encrypt(input, shift) : caesar::decrypt(input, shift);
-
-  } else if (cipherType == "ROT13 Cipher") {
-
-    return (enc) ? rot13::encrypt(input) : rot13::decrypt(input);
-
-  } else if (cipherType == "Substitution Cipher") {
-
-    string keyword;
-    cout << "Enter keyword: ";
-    cin >> keyword;
-
-    return (enc) ? substitution::encrypt(input, keyword) : substitution::decrypt(input, keyword);
-
-  } else if (cipherType == "Vigenere Cipher") {
-
-    string keyword;
-    cout << "Enter keyword: ";
-    cin >> keyword;
-
-    return (enc) ? vigenere::encrypt(input, keyword) : vigenere::decrypt(input, keyword);
-
-  } else if (cipherType == "Atbash Cipher") {
-
-    return (enc) ? atbash::encrypt(input) : atbash::decrypt(input);
-
-  } else if (cipherType == "Bacon Cipher") {
-
-    char c0, c1;
-    cout << "Enter binary digits (char): ";
-    cin >> c0 >> c1; 
-
-    return (enc) ? bacon::encrypt(input, c0, c1) : bacon::decrypt(input, c0, c1);
-
-  } else if (cipherType == "Polybius-Square Cipher") {
-
-    return (enc) ? polybiusSquare::encrypt(input) : polybiusSquare::decrypt(input);
-
-  }  else {
-    cout << "Unknown cipher: " << cipherType << endl;
-    return "Nan";
-  }
 }

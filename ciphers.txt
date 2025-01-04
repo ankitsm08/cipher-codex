@@ -6,3 +6,4 @@ Vigenere Cipher
 Atbash Cipher
 Bacon Cipher
 Polybius-Square Cipher
+Rail-Fence Cipher

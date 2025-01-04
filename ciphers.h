@@ -6,3 +6,4 @@
 #include "ciphers/atbash.h"
 #include "ciphers/bacon.h"
 #include "ciphers/polybiusSquare.h"
+#include "ciphers/railFence.h"

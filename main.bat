@@ -7,6 +7,7 @@ g++ test.cpp ^
   ciphers/atbash.cpp ^
   ciphers/bacon.cpp ^
   ciphers/polybiusSquare.cpp ^
+  ciphers/railFence.cpp ^
   -o test.exe
 
 test.exe
