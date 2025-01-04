@@ -7,6 +7,7 @@ using namespace std;
 
 string polybiusSquare::encrypt(const string& text) {
   string code = "";
+  code.reserve(text.size() * 2);
   
   // ignores non-alphabetic characters
   for (char c : text) {
@@ -38,6 +39,7 @@ string polybiusSquare::encrypt(const string& text) {
 
 string polybiusSquare::decrypt(const string& code) {
   string text = "";
+  text.reserve(code.size() / 2);
 
   for (int i = 0; i < code.length();) {
     if (isdigit(code[i])) {

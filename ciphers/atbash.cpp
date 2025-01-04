@@ -4,6 +4,7 @@ using namespace std;
 
 string atbash::encrypt(const string& text) {
   string code = "";
+  code.reserve(text.size());
 
   for (char c : text) {
     if (isalpha(c)) {

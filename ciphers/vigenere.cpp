@@ -2,17 +2,21 @@
 
 using namespace std;
 
-string toLower(const string& s) {
+string stringToLowerCase(const string& s) {
   string lower = "";
+  lower.reserve(s.size());
+
   for (char c: s) {
     lower += tolower(c);
   }
+
   return lower;
 }
 
 string vigenere::encrypt(const string& text, const std::string& keyword) {
   string code = "";
-  string key = toLower(keyword);
+  code.reserve(text.size());
+  string key = stringToLowerCase(keyword);
   
   for (int i = 0; i < text.length(); i++) {
     if (isalpha(text[i])) {
@@ -29,7 +33,8 @@ string vigenere::encrypt(const string& text, const std::string& keyword) {
 
 string vigenere::decrypt(const string& code, const std::string& keyword) {
   string text = "";
-  string key = toLower(keyword);
+  text.reserve(code.size());
+  string key = stringToLowerCase(keyword);
   
   for (int i = 0; i < code.length(); i++) {
     if (isalpha(code[i])) {

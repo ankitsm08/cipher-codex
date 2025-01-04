@@ -11,6 +11,7 @@ bool isInKey(const unordered_set<char>& keySet, char c) {
 // Generates a capitalised key 
 string generateKey(const string& keyword) {
   string key = "";
+  key.reserve(alphabet.size());
   unordered_set<char> keySet;
 
   for (char c : keyword) {
@@ -43,6 +44,7 @@ string generateReverseKey(const string& keyword) {
 
 string substitute(const string& text, const string& key) {
   string code = "";
+  code.reserve(text.size());
 
   for (char c : text) {
     if (isalpha(c)) {

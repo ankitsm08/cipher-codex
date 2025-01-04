@@ -4,6 +4,7 @@ using namespace std;
 
 string caesar::encrypt(const string& text, const int shift) {
   string code = "";
+  code.reserve(text.size());
 
   for (char c : text) {
     if (isalpha(c)) {
